@@ -1,7 +1,34 @@
-const ReadSingleItem = (context) => {
+import connectDB from "@/app/utils/database";
+import { ItemModel } from "@/app/utils/schemaModels";
+import Image from "next/image";
+
+const itemReadSingle = async (context) => {
+  const params = await context.params;
+  await connectDB();
+  const singleItem = await ItemModel.findById(params.id);
+  return singleItem;
+};
+
+const ReadSingleItem = async (context) => {
+  const singleItem = await itemReadSingle(context);
+
   return (
     <div>
-      <h1>1つだけアイテムデータを読み取るページ</h1>
+      <div>
+        <Image
+          src={singleItem.image}
+          width={750}
+          height={500}
+          alt="item-image"
+          priority
+        />
+      </div>
+      <div>
+        <h1>{singleItem.title}</h1>
+        <h2>&yen;{singleItem.price}</h2>
+        <hr />
+        <p>{singleItem.description}</p>
+      </div>
     </div>
   );
 };

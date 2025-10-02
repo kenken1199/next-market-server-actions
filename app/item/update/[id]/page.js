@@ -1,11 +1,16 @@
 import { itemReadSingle } from "../../readsingle/[id]/page";
+import { itemUpdate } from "@/app/actions/itemUpdate";
 
 const UpdateItem = async (context) => {
   const singleItem = await itemReadSingle(context);
+
+  const params = await context.params;
+
+  const itemUpdateWithId = itemUpdate.bind(null, params.id);
   return (
     <div>
       <h1>アイテム編集</h1>
-      <form>
+      <form action={itemUpdateWithId}>
         <input
           defaultValue={singleItem.title}
           type="text"
@@ -34,7 +39,7 @@ const UpdateItem = async (context) => {
           placeholder="商品説明"
           required
         ></textarea>
-        <button>作成</button>
+        <button>編集</button>
       </form>
     </div>
   );

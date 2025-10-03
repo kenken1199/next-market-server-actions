@@ -1,6 +1,9 @@
 import { itemCreate } from "@/app/actions/itemCreate";
+import { getToken } from "@/app/utils/auth";
 
-const CreateItem = () => {
+const CreateItem = async () => {
+  const payload = await getToken();
+  console.log(payload);
   return (
     <div>
       <h1>アイテム作成</h1>
@@ -8,6 +11,7 @@ const CreateItem = () => {
         <input type="text" name="title" placeholder="アイテム名" required />
         <input type="text" name="price" placeholder="価格" required />
         <input type="text" name="image" placeholder="画像" required />
+        <input type="hidden" name="email" value={payload.email} />
         <textarea
           name="description"
           rows={15}

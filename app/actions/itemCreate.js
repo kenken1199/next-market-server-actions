@@ -10,6 +10,7 @@ export const itemCreate = async (formData) => {
     price: formData.get("price"),
     image: formData.get("image"),
     description: formData.get("description"),
+    email: formData.get("email"),
   };
 
   try {

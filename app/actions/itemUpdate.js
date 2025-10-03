@@ -8,6 +8,7 @@ export const itemUpdate = async (id, formData) => {
     price: formData.get("price"),
     image: formData.get("image"),
     description: formData.get("description"),
+    email: formData.get("email"),
   };
 
   try {

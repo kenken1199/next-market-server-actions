@@ -1,6 +1,7 @@
 import connectDB from "@/app/utils/database";
 import { ItemModel } from "@/app/utils/schemaModels";
 import Image from "next/image";
+import Link from "next/link";
 
 export const itemReadSingle = async (context) => {
   const params = await context.params;
@@ -28,6 +29,10 @@ const ReadSingleItem = async (context) => {
         <h2>&yen;{singleItem.price}</h2>
         <hr />
         <p>{singleItem.description}</p>
+        <div>
+          <Link href={`/item/update/${singleItem._id}`}>アイテム編集</Link>
+          <Link href={`/item/delete/${singleItem._id}`}>アイテム削除</Link>
+        </div>
       </div>
     </div>
   );

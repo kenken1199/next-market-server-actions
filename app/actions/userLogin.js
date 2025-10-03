@@ -1,4 +1,5 @@
 "use server";
+import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { SignJWT } from "jose";
 import connectDB from "../utils/database";
@@ -41,4 +42,5 @@ export const userLogin = async (prevState, formData) => {
   } catch {
     return { message: "エラー:ログイン失敗" };
   }
+  redirect("/");
 };

@@ -5,7 +5,7 @@ const CreateItem = async () => {
   const payload = await getToken();
   console.log(payload);
   return (
-    <div>
+    <div className="page-title">
       <h1>アイテム作成</h1>
       <form action={itemCreate}>
         <input type="text" name="title" placeholder="アイテム名" required />

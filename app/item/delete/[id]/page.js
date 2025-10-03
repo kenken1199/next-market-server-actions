@@ -13,7 +13,7 @@ const DeleteItem = async (context) => {
   if (singleItem.email === payload.email) {
     return (
       <div>
-        <h1>アイテム削除</h1>
+        <h1 className="page-title">アイテム削除</h1>
         <form action={itemDeleteWithId}>
           <h2>{singleItem.title}</h2>
           <Image

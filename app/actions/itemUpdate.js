@@ -1,4 +1,6 @@
 "use server";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import connectDB from "../utils/database";
 import { ItemModel } from "../utils/schemaModels";
 
@@ -17,4 +19,6 @@ export const itemUpdate = async (id, formData) => {
   } catch {
     throw new Error("エラー:アイテム編集失敗");
   }
+  revalidatePath("/");
+  redirect("/");
 };
